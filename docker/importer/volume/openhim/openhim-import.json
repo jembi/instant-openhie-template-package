@@ -70,7 +70,7 @@
       "requestBody": true,
       "responseBody": true,
       "rewriteUrlsConfig": [],
-      "urlPattern": "^/*$",
+      "urlPattern": "^/template$",
       "matchContentRegex": null,
       "matchContentXpath": null,
       "matchContentValue": null,
