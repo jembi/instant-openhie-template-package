@@ -1,4 +1,14 @@
 version: '3.3'
 
 services:
-  # package component containers
+  # example package component containers
+  template-file-config-component:
+    image: node:fermium-alpine3.12
+    container_name: template-component
+    volumes: 
+      - template-file-config-component-volume:/home/node/app/
+    command: node /home/node/app/index.js
+
+volumes:
+  template-file-config-component-volume:
+    external: true
