@@ -13,8 +13,8 @@ if [ "$1" == "init" ]; then
 
     # Sleep for 20 seconds to give user time to check logs for default config start up. `docker logs -f template-component`
     # and to make a request to the unconfigured server `curl http://localhost:5001/template -H "Authorization: Custom test"`
-    printf "\nSleep for 20s. Check logs and default server response...\n"
-    sleep 20
+    printf "\nSleep for 30s. Check logs and default server response...\n"
+    sleep 30
     printf "Adding new template file config\n"
 
     # Add new config file to "existing" component
