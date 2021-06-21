@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: template-file-config-component-deployment
+  labels:
+    package: template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: template-file-config-component
+  template:
+    metadata:
+      labels:
+        component: template-file-config-component
+    spec:
+      containers:
+        - name: template-file-config-component
+          image: node:fermium-alpine3.12
+          ports:
+            - containerPort: 9090
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi"
+              cpu: "1"

@@ -1,0 +1,3 @@
+resources:
+  - ./template-component/template-component-deployment.yaml
+  - ./template-component/template-component-service.yaml
