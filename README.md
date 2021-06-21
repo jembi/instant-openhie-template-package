@@ -22,8 +22,16 @@ An Instant OpenHIE Template Package from which to build custom packages.
 1. Get the relative path from your working directory to this template package.
 1. Run the command below to initialise Instant OpenHIE with our custom package template.
 
+    Docker:
+
     ```sh
-    ./deploy.sh init template -c="<file/path>"
+    ./deploy.sh init -t docker template -c="<file/path>"
+    ```
+
+    Kubernetes:
+
+    ```sh
+    ./deploy.sh init -t k8s template -c="<file/path>"
     ```
 
     >  Substitute in your file path into the `-c` flag
