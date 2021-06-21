@@ -3,14 +3,17 @@ const http = require('http')
 const path = require('path')
 
 let config = {
-  message: 'Default server config',
-  port: 7070
+  message: 'Default server config'
 }
 
-config = Object.assign(
-  config,
-  JSON.parse(fs.readFileSync(path.resolve(__dirname, 'config.json')))
-)
+try {
+  config = Object.assign(
+    config,
+    JSON.parse(fs.readFileSync(path.resolve(__dirname, 'config.json')))
+  )
+} catch (e) {
+  console.error(`Failed to read config file - using default config.\n${e}\n\n`)
+}
 
 http
   .createServer((request, response) => {
@@ -22,6 +25,6 @@ http
         response.end(Buffer.from(config.message))
       })
   })
-  .listen(config.port, () => {
-    console.log(`Server running at: http://localhost:${config.port}`)
+  .listen(9090, () => {
+    console.log(`Server running at: http://localhost:9090`)
   })
