@@ -1,12 +1,8 @@
 version: '3.3'
 
 services:
-  # example package component containers
   template-new-file-config-component:
     image: jembi/configurable-canned-response-server:latest
     container_name: template-new-file-config-component
-    volumes:
-      - template-file-config-component-volume:/home/node/app/
-
-volumes:
-  template-file-config-component-volume:
+    ports:
+      - "9090:9090"

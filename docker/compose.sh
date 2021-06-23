@@ -18,20 +18,21 @@ if [ "$1" == "init" ]; then
     sleep 30
     printf "Adding new template file config\n"
 
-    # Add new config file to "existing" component
-    docker cp "$composeFilePath"/importer/volume/template-file-config-component/config.json file-import-helper:/app
-    # Remove helper container - this container is only used to attach the shared volume for file transfer
-    docker rm file-import-helper
+    # Step 3: Add our new config
+    # --------------------------
 
-    # Restart exisitng component to use new config
-    docker restart template-component
+    ## Add new config file to "existing" component
+    docker cp "$composeFilePath"/importer/volume/template-new-file-config-component/config.json template-new-file-config-component:/home/node/app
+
+    ## Restart exisitng component to use new config
+    docker restart template-new-file-config-component
 elif [ "$1" == "up" ]; then
-    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml up -d
+    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/docker-compose.dev.yml up -d
 elif [ "$1" == "down" ]; then
-    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml stop
+    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml -f "$composeFilePath"/docker-compose.dev.yml stop
 elif [ "$1" == "destroy" ]; then
-    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml down
-    docker volume rm template-file-config-component-volume
+    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml -f "$composeFilePath"/docker-compose.dev.yml down
+    docker volume rm instant_template-file-config-component-volume
 else
     echo "Valid options are: init, up, down, or destroy"
 fi
