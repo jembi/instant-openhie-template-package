@@ -3,17 +3,18 @@
 composeFilePath=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 if [ "$1" == "init" ]; then
-    # Simulating a pre-existing instant component. In this example the component is running with some default config settings.
-    # This helper container is needed to transfer files into a shared volume. A volume can only have data added if it is connected to a container.
-    docker create --name file-import-helper -v template-file-config-component-volume:/app busybox
-    # Copy in demo server file
-    docker cp "$composeFilePath"/importer/volume/template-file-config-component/index.js file-import-helper:/app
-    # Start up template file config container and add the OpenHIM channel
-    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml up -d
+    # Step 1: Load Preset Config into external volume
+    # -----------------------------------------------
 
-    # Sleep for 20 seconds to give user time to check logs for default config start up. `docker logs -f template-component`
-    # and to make a request to the unconfigured server `curl http://localhost:5001/template -H "Authorization: Custom test"`
-    printf "\nSleep for 30s. Check logs and default server response...\n"
+    ## In this example, the component is already running with its default config.
+    ## The command below starts up the template file config container, imports the OpenHIM channel, and opens up the ports to localhost for development
+    docker-compose -p instant -f "$composeFilePath"/docker-compose.yml -f "$composeFilePath"/importer/docker-compose.config.yml -f "$composeFilePath"/docker-compose.dev.yml up -d
+
+    # Step 2: Pause Script to allow for User Interaction
+    # --------------------------------------------------
+
+    ## Sleep for 30 seconds to give user time to  make a request to the unconfigured server:
+    printf "\nSleep for 30s. Check default server response...\ncurl http://localhost:5001/template -H 'Authorization: Custom test'\n"
     sleep 30
     printf "Adding new template file config\n"
 
