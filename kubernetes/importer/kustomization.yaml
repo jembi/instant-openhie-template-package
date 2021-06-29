@@ -1,8 +1,14 @@
 configMapGenerator:
-  - name: openhim-config-importer-configmap
+  - name: template-openhim-config-importer-configmap
     files:
       - ./volume/openhim/openhim-import.json
       - ./volume/openhim/openhimConfig.js
+  - name: template-new-file-component-configmap
+    files:
+      - ./volume/template-new-file-config-component/index.js
+      - ./volume/template-new-file-config-component/config.json
 
 resources:
   - ./openhim-config-importer-job.yaml
+  - ./update-template-component-deployment.yaml
+  - ./update-template-component-service.yaml

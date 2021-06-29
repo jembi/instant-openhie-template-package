@@ -58,7 +58,7 @@
           "forwardAuthHeader": false,
           "name": "Template Component Route",
           "secured": false,
-          "host": "template-file-config-component",
+          "host": "template-new-file-config-component-service",
           "port": 9090,
           "path": "",
           "pathTransform": "",
