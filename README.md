@@ -2,9 +2,13 @@
 
 An Instant OpenHIE Template Package from which to build custom packages.
 
+## Prerequisites
+
+Before using this template, we suggest you read through this guide on [creating packages](https://openhie.github.io/instant/docs/how-to/creating-packages/) to understand the structure and content of Instant OpenHIE packages.
+
 ## Template purpose
 
-This template package aims to demonstrate two Instant OpenHIE Package config methods namely config file and API.
+This template package aims to demonstrate two Instant OpenHIE Package config methods, namely config file and API.
 
 ### API config
 
