@@ -6,6 +6,13 @@ An Instant OpenHIE Template Package from which to build custom packages.
 
 Before using this template, we suggest you read through this guide on [creating packages](https://openhie.github.io/instant/docs/how-to/creating-packages/) to understand the structure and content of Instant OpenHIE packages.
 
+We also recommend you have the following available to follow along:
+
+- Fast uncapped internet connection
+- Linux operating system
+- Docker & Docker Compose installed
+- Kubernetes installed
+
 ## Template purpose
 
 This template package aims to demonstrate two Instant OpenHIE Package config methods, namely config file and API.
@@ -32,13 +39,6 @@ curl http://localhost:5001/template -H "Authorization: Custom test"
 ```
 
 Then run the curl command again after the script completes to see the configured server response.
-
-## Prerequisites
-
-- Fast uncapped internet connection
-- Linux operating system
-- Docker & Docker Compose installed
-- Kubernetes installed
 
 ## Setup
 
